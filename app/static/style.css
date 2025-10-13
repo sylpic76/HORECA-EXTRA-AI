@@ -1,0 +1,160 @@
+:root {
+  color-scheme: light dark;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --primary: #ff6b2c;
+  --background: #f5f5f5;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --text: #222;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(145deg, #ffeede 0%, #fff6ee 40%, #f3f4ff 100%);
+  color: var(--text);
+}
+
+header,
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+main {
+  display: grid;
+  gap: 1.5rem;
+  padding: 0 1rem 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(255, 107, 44, 0.2);
+}
+
+#job-results {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.job-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.job-card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 107, 44, 0.1);
+  color: #ff6b2c;
+  font-size: 0.75rem;
+  margin-right: 0.4rem;
+}
+
+.double {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.assistant-output {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: none;
+}
+
+.assistant-output.active {
+  display: block;
+}
+
+.assistant-output ul {
+  padding-left: 1.1rem;
+}
+
+.assistant-output h3 {
+  margin-top: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #101010;
+    --card-bg: rgba(24, 24, 24, 0.9);
+    --text: #f4f4f4;
+  }
+
+  body {
+    background: linear-gradient(145deg, #251c16 0%, #1f1f26 100%);
+  }
+
+  input,
+  select,
+  button {
+    background: rgba(0, 0, 0, 0.2);
+    color: inherit;
+  }
+
+  .job-card {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .assistant-output {
+    background: rgba(0, 0, 0, 0.35);
+  }
+}

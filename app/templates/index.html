@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HORECA Extra AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <header>
+      <h1>HORECA Extra AI</h1>
+      <p>
+        Mise en relation instantanée entre établissements et professionnels de
+        l'hôtellerie-restauration grâce à un assistant intelligent.
+      </p>
+    </header>
+
+    <main>
+      <section class="card" id="search-section">
+        <h2>Recherche de missions</h2>
+        <form id="search-form">
+          <div class="form-row">
+            <label for="filter-location">Ville</label>
+            <input id="filter-location" name="location" placeholder="Paris, Lyon..." />
+          </div>
+          <div class="form-row">
+            <label for="filter-start">À partir du</label>
+            <input id="filter-start" name="start" type="date" />
+          </div>
+          <div class="form-row">
+            <label for="filter-end">Jusqu'au</label>
+            <input id="filter-end" name="end" type="date" />
+          </div>
+          <button type="submit">Filtrer</button>
+        </form>
+        <div id="job-results"></div>
+      </section>
+
+      <section class="card" id="candidate-assistant">
+        <h2>Assistant candidat</h2>
+        <p>
+          Vérifiez en un clic si une mission correspond à votre profil et
+          envoyez une candidature éclair.
+        </p>
+        <form id="candidate-form">
+          <div class="form-row">
+            <label for="candidate-job">Mission</label>
+            <select id="candidate-job" name="job_id"></select>
+          </div>
+          <div class="form-row">
+            <label for="candidate-name">Nom</label>
+            <input id="candidate-name" name="name" placeholder="Votre nom" />
+          </div>
+          <div class="form-row">
+            <label for="candidate-locations">Zones d'intervention</label>
+            <input
+              id="candidate-locations"
+              name="locations"
+              placeholder="Paris, Versailles"
+            />
+          </div>
+          <div class="form-row">
+            <label for="candidate-skills">Compétences</label>
+            <input
+              id="candidate-skills"
+              name="skills"
+              placeholder="service en salle, anglais"
+            />
+          </div>
+          <div class="double">
+            <div class="form-row">
+              <label for="candidate-availability-start">Disponible du</label>
+              <input id="candidate-availability-start" type="date" />
+            </div>
+            <div class="form-row">
+              <label for="candidate-availability-end">au</label>
+              <input id="candidate-availability-end" type="date" />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="candidate-shifts">Horaires préférés</label>
+            <input id="candidate-shifts" placeholder="Matin, Soir" />
+          </div>
+          <button type="submit">Analyser la mission</button>
+        </form>
+        <div class="assistant-output" id="candidate-output"></div>
+      </section>
+
+      <section class="card" id="employer-assistant">
+        <h2>Assistant établissement</h2>
+        <p>
+          Confirmez la disponibilité d'un talent et recevez des recommandations
+          instantanées.
+        </p>
+        <form id="employer-form">
+          <div class="form-row">
+            <label for="employer-job">Mission</label>
+            <select id="employer-job" name="job_id"></select>
+          </div>
+          <div class="form-row">
+            <label for="employer-candidate">Candidat ciblé (optionnel)</label>
+            <select id="employer-candidate" name="candidate_id">
+              <option value="">-- Choisir --</option>
+            </select>
+          </div>
+          <button type="submit">Vérifier</button>
+        </form>
+        <div class="assistant-output" id="employer-output"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Prototype conçu pour illustrer un workflow digitalisé entre employeurs et
+        talents disponibles.
+      </p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </body>
+</html>
