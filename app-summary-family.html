@@ -1,0 +1,517 @@
+<title>Horeca Extra — expliqué à ma famille</title>
+<style>
+  :root{
+    --ground:#F6F8F4;
+    --ink:#14201C;
+    --ink-soft:#4b5a53;
+    --ink-faint:#7d8a83;
+    --paper:#ffffff;
+    --line:#e3e8df;
+    --line-strong:#cfd6c9;
+    --amber:#d17d1e;
+    --amber-deep:#a35c0c;
+    --amber-wash:#fbf1e2;
+    --teal:#0f3a34;
+    --teal-ink:#e8f1ec;
+    --live:#1f9a54;
+    --live-wash:#e6f4ec;
+    --shadow:0 1px 2px rgba(20,32,28,.04),0 8px 30px -18px rgba(20,32,28,.25);
+    --maxw:1080px;
+    --f-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --f-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#0d1411;--ink:#eaf1ea;--ink-soft:#9fb1a8;--ink-faint:#74857c;
+      --paper:#15201c;--line:#263630;--line-strong:#324740;
+      --amber:#f0a94e;--amber-deep:#f8c483;--amber-wash:#241a0f;
+      --teal:#123f38;--teal-ink:#e7f1ec;
+      --live:#4bc37d;--live-wash:#12261c;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 18px 40px -22px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0d1411;--ink:#eaf1ea;--ink-soft:#9fb1a8;--ink-faint:#74857c;
+    --paper:#15201c;--line:#263630;--line-strong:#324740;
+    --amber:#f0a94e;--amber-deep:#f8c483;--amber-wash:#241a0f;
+    --teal:#123f38;--teal-ink:#e7f1ec;
+    --live:#4bc37d;--live-wash:#12261c;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 18px 40px -22px rgba(0,0,0,.7);
+  }
+  :root[data-theme="light"]{
+    --ground:#F6F8F4;--ink:#14201C;--ink-soft:#4b5a53;--ink-faint:#7d8a83;
+    --paper:#ffffff;--line:#e3e8df;--line-strong:#cfd6c9;
+    --amber:#d17d1e;--amber-deep:#a35c0c;--amber-wash:#fbf1e2;
+    --teal:#0f3a34;--teal-ink:#e8f1ec;
+    --live:#1f9a54;--live-wash:#e6f4ec;
+    --shadow:0 1px 2px rgba(20,32,28,.04),0 8px 30px -18px rgba(20,32,28,.25);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:var(--f-sans);line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    font-size:17px;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{padding:64px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+
+  .eyebrow{
+    font-family:var(--f-mono);font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--amber-deep);font-weight:600;
+    display:inline-flex;align-items:center;gap:.6em;margin:0 0 18px;
+  }
+  .eyebrow .n{color:var(--ink-faint)}
+  h1,h2,h3{text-wrap:balance;line-height:1.1;margin:0}
+  h2{font-size:clamp(1.7rem,4.2vw,2.5rem);font-weight:800;letter-spacing:-.02em}
+  h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+  p{margin:0 0 1em}
+  .lead{font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--ink-soft);max-width:65ch}
+  section > .wrap > h2 + .lead{margin-top:16px}
+  .plain{color:var(--ink-soft)}
+  a{color:var(--amber-deep)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(120% 120% at 85% -10%, color-mix(in srgb,var(--amber) 14%, transparent), transparent 55%),
+      var(--ground);
+    border-top:none;padding-top:56px;padding-bottom:52px;
+    position:relative;overflow:hidden;
+  }
+  .hero .grid-bg{
+    position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:34px 34px;
+    -webkit-mask-image:radial-gradient(80% 70% at 70% 0%,#000,transparent 70%);
+            mask-image:radial-gradient(80% 70% at 70% 0%,#000,transparent 70%);
+  }
+  .hero .wrap{position:relative}
+  .brandline{display:flex;align-items:center;gap:12px;margin-bottom:30px}
+  .logo{
+    width:38px;height:38px;border-radius:11px;background:var(--teal);color:var(--teal-ink);
+    display:grid;place-items:center;font-family:var(--f-mono);font-weight:700;font-size:1.05rem;
+    box-shadow:var(--shadow);
+  }
+  .brandname{font-weight:700;letter-spacing:-.01em}
+  .brandname small{display:block;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+  h1{font-size:clamp(2.3rem,6.2vw,4rem);font-weight:800;letter-spacing:-.03em;max-width:16ch}
+  h1 .hl{color:var(--amber-deep)}
+  .hero .lead{margin-top:22px}
+  .who{
+    margin-top:26px;display:inline-flex;flex-wrap:wrap;gap:8px;
+  }
+  .chip{
+    font-family:var(--f-mono);font-size:.72rem;letter-spacing:.04em;
+    background:var(--paper);border:1px solid var(--line-strong);border-radius:100px;
+    padding:7px 13px;color:var(--ink-soft);
+  }
+
+  .slots{
+    margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  }
+  .slot{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:16px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .slot .role{font-weight:700;font-size:1rem}
+  .slot .meta{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-faint);margin-top:3px}
+  .slot .state{
+    margin-top:14px;display:inline-flex;align-items:center;gap:7px;
+    font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.03em;
+    padding:5px 10px;border-radius:100px;
+  }
+  .state.open{background:var(--amber-wash);color:var(--amber-deep)}
+  .state.done{background:var(--live-wash);color:var(--live)}
+  .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .slot .flip .done{display:none}
+  .slot.filled .open{display:none}
+  .slot.filled .done{display:inline-flex}
+  @media(prefers-reduced-motion:no-preference){
+    .slot{transition:border-color .4s}
+    .slot.filled{border-color:color-mix(in srgb,var(--live) 40%,var(--line))}
+  }
+
+  /* ---------- generic cards ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:24px;box-shadow:var(--shadow);
+  }
+  .card h3{margin-bottom:8px}
+  .card p:last-child{margin-bottom:0}
+  .card .ic{
+    width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
+    background:var(--amber-wash);color:var(--amber-deep);margin-bottom:14px;
+    font-size:1.15rem;
+  }
+
+  /* problem/solution split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+  .split > div{padding:28px}
+  .split .prob{background:var(--paper)}
+  .split .sol{background:var(--teal);color:var(--teal-ink)}
+  .split .sol h3{color:#fff}
+  .split .sol .plain{color:color-mix(in srgb,var(--teal-ink) 78%,transparent)}
+  .split h3{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+  .split .tag{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:6px}
+  .split .prob .tag{background:#f4e4e4;color:#a23b2f}
+  .split .sol .tag{background:rgba(255,255,255,.14);color:#fff}
+  ul.clean{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+  ul.clean li{display:flex;gap:11px;align-items:flex-start;line-height:1.5}
+  ul.clean li::before{content:"";flex:0 0 auto;width:18px;height:18px;margin-top:3px;border-radius:6px;background:var(--amber-wash);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a35c0c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:12px}
+  .sol ul.clean li::before{background-color:rgba(255,255,255,.16);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
+
+  /* KPI numbers */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .kpi{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+  .kpi .num{font-family:var(--f-mono);font-size:2rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+  .kpi .num .u{font-size:1.1rem;color:var(--amber-deep)}
+  .kpi .lab{margin-top:9px;font-size:.86rem;color:var(--ink-soft);line-height:1.35}
+
+  /* build list (ampleur) */
+  .build{display:flex;flex-direction:column;gap:12px}
+  .brow{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;
+    background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:15px 18px;box-shadow:var(--shadow)}
+  .brow .bi{width:34px;height:34px;border-radius:9px;background:var(--amber-wash);color:var(--amber-deep);display:grid;place-items:center;font-size:1.05rem}
+  .brow .bt{font-weight:650}
+  .brow .bd{font-size:.9rem;color:var(--ink-soft);margin-top:1px}
+  .badge{font-family:var(--f-mono);font-size:.66rem;font-weight:600;letter-spacing:.05em;padding:5px 10px;border-radius:100px;white-space:nowrap}
+  .badge.ok{background:var(--live-wash);color:var(--live)}
+  .badge.wip{background:var(--amber-wash);color:var(--amber-deep)}
+  .badge.next{background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink-soft)}
+
+  /* revenue table */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:520px;background:var(--paper)}
+  th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+  th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  tbody tr:last-child td{border-bottom:none}
+  td.n{font-family:var(--f-mono);text-align:right;white-space:nowrap}
+  tr.total td{font-weight:700;background:var(--amber-wash)}
+  tr.total td.n{color:var(--amber-deep)}
+  .rev-cols{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:start;margin-top:8px}
+
+  /* timeline */
+  .tl{display:flex;flex-direction:column;gap:0;position:relative;margin-left:6px}
+  .tl .step{display:grid;grid-template-columns:auto 1fr;gap:20px;padding-bottom:26px;position:relative}
+  .tl .step:last-child{padding-bottom:0}
+  .tl .rail{display:flex;flex-direction:column;align-items:center}
+  .tl .mk{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:.8rem;font-weight:700;
+    background:var(--paper);border:2px solid var(--line-strong);color:var(--ink-soft);z-index:1}
+  .tl .step.now .mk{background:var(--amber);border-color:var(--amber);color:#fff}
+  .tl .step.done .mk{background:var(--teal);border-color:var(--teal);color:#fff}
+  .tl .line{width:2px;flex:1;background:var(--line-strong);margin-top:2px}
+  .tl .step:last-child .line{display:none}
+  .tl .body{padding-top:2px}
+  .tl .when{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-deep);font-weight:600}
+  .tl .body h3{margin:4px 0 6px}
+  .tl .body p{margin:0;color:var(--ink-soft);font-size:.95rem}
+
+  /* big teal callout */
+  .callout{background:var(--teal);color:var(--teal-ink);border-radius:22px;padding:40px;box-shadow:var(--shadow)}
+  .callout h2{color:#fff}
+  .callout .lead{color:color-mix(in srgb,var(--teal-ink) 82%,transparent)}
+  .callout .eyebrow{color:var(--amber-deep)}
+  :root[data-theme="dark"] .callout .eyebrow,@media(prefers-color-scheme:dark){}
+  .callout .amberw{color:var(--amber)}
+
+  .note{font-size:.82rem;color:var(--ink-faint);border-left:2px solid var(--line-strong);padding-left:14px;margin-top:22px;max-width:70ch}
+  .note b{color:var(--ink-soft)}
+
+  footer{padding:40px 0 64px;color:var(--ink-faint);font-size:.85rem;text-align:center}
+
+  @media(max-width:820px){
+    .grid2,.grid3,.split,.rev-cols{grid-template-columns:1fr}
+    .kpis{grid-template-columns:1fr 1fr}
+    .slots{grid-template-columns:1fr}
+    .brow{grid-template-columns:auto 1fr;gap:12px}
+    .brow .badge{grid-column:2;justify-self:start}
+  }
+</style>
+
+<header class="hero">
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <div class="brandline">
+      <div class="logo">HX</div>
+      <div class="brandname">Horeca Extra<small>Le résumé, pour la famille</small></div>
+    </div>
+
+    <h1>L'appli qui trouve un serveur fiable <span class="hl">avant le coup de feu</span>.</h1>
+    <p class="lead">Un restaurant, un hôtel ou un café a besoin de quelqu'un ce soir. En quelques minutes, il trouve un « extra » — un serveur, un plongeur, un cuisinier — disponible, vérifié, prêt à travailler. C'est ça, l'application que je construis.</p>
+
+    <div class="who">
+      <span class="chip">🍽️ Pour les restaurants &amp; hôtels</span>
+      <span class="chip">🧑‍🍳 Pour les extras</span>
+      <span class="chip">🇫🇷 Marché français</span>
+    </div>
+
+    <div class="slots" id="slots">
+      <div class="slot">
+        <div class="role">Serveur·se</div>
+        <div class="meta">Ce soir · 18h–23h · Brasserie</div>
+        <div class="flip"><span class="state open"><span class="dot"></span>À pourvoir</span><span class="state done">✓ Pourvu en 4 min</span></div>
+      </div>
+      <div class="slot">
+        <div class="role">Plongeur·se</div>
+        <div class="meta">Demain · 12h–15h · Hôtel</div>
+        <div class="flip"><span class="state open"><span class="dot"></span>À pourvoir</span><span class="state done">✓ Pourvu en 7 min</span></div>
+      </div>
+      <div class="slot">
+        <div class="role">Commis de cuisine</div>
+        <div class="meta">Vendredi · 19h–00h · Restaurant</div>
+        <div class="flip"><span class="state open"><span class="dot"></span>À pourvoir</span><span class="state done">✓ Pourvu en 2 min</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 1. C'est quoi -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="n">01</span> C'est quoi, en une phrase&nbsp;?</div>
+    <h2>Un « Uber » du remplacement pour les métiers de bouche — mais sérieux et vérifié.</h2>
+    <p class="lead">Dans les cafés, hôtels et restaurants (ce qu'on appelle le secteur « HORECA »), il manque tout le temps du monde&nbsp;: un serveur malade, un gros service imprévu, un weekend chargé. Aujourd'hui, on décroche son téléphone et on appelle 15 personnes. Mon application remplace tout ça.</p>
+
+    <div class="split" style="margin-top:28px">
+      <div class="prob">
+        <h3><span class="tag">Le problème</span></h3>
+        <ul class="clean">
+          <li>Le patron passe des heures à chercher quelqu'un à la dernière minute.</li>
+          <li>Il ne sait pas si la personne est fiable, ni si l'entreprise en face est sérieuse.</li>
+          <li>L'extra, lui, galère à trouver des missions régulières et bien payées.</li>
+          <li>Tout se passe par bouche-à-oreille, WhatsApp, appels… c'est le chaos.</li>
+        </ul>
+      </div>
+      <div class="sol">
+        <h3><span class="tag">Ma solution</span></h3>
+        <ul class="clean">
+          <li>Le patron poste son besoin&nbsp;: « serveur, ce soir, 18h–23h ».</li>
+          <li>L'appli propose aussitôt des extras disponibles et vérifiés à proximité.</li>
+          <li>L'entreprise est contrôlée (KBIS), le candidat a un profil propre.</li>
+          <li>Match, mission confirmée, tout le monde est tranquille. En minutes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Ampleur du travail -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="n">02</span> L'ampleur du travail accompli</div>
+    <h2>Ce n'est pas une idée sur une nappe de restaurant. C'est une vraie plateforme.</h2>
+    <p class="lead">Construire ça, ce n'est pas « une petite appli ». C'est plusieurs produits qui doivent marcher ensemble&nbsp;: un site public, une application mobile, une base de données sécurisée, de l'intelligence artificielle, et des systèmes de vérification. Voici les grands chantiers.</p>
+
+    <div class="build" style="margin-top:28px">
+      <div class="brow"><div class="bi">🌐</div><div><div class="bt">Site vitrine (version web)</div><div class="bd">La « façade » publique&nbsp;: explique le concept, attire restaurants et extras, permet l'inscription.</div></div><span class="badge ok">Conçu</span></div>
+      <div class="brow"><div class="bi">📱</div><div><div class="bt">Application mobile</div><div class="bd">Le cœur du produit&nbsp;: poster un besoin, recevoir des extras, gérer ses missions depuis son téléphone.</div></div><span class="badge wip">En cours</span></div>
+      <div class="brow"><div class="bi">🛡️</div><div><div class="bt">Vérification KBIS des entreprises</div><div class="bd">On contrôle que chaque établissement est une vraie société déclarée. Zéro arnaque, confiance des deux côtés.</div></div><span class="badge wip">En cours</span></div>
+      <div class="brow"><div class="bi">🤖</div><div><div class="bt">CV « boosté » par l'IA</div><div class="bd">L'intelligence artificielle transforme un profil brut en CV propre et vendeur pour l'extra.</div></div><span class="badge wip">En cours</span></div>
+      <div class="brow"><div class="bi">🗄️</div><div><div class="bt">Base de données &amp; sécurité</div><div class="bd">Stockage des profils, missions, messages — hébergé et sécurisé (comptes, droits d'accès, données protégées).</div></div><span class="badge wip">En cours</span></div>
+      <div class="brow"><div class="bi">💬</div><div><div class="bt">Messagerie &amp; matching</div><div class="bd">Le moteur qui rapproche le bon extra du bon besoin, et permet de communiquer dans l'appli.</div></div><span class="badge next">À venir</span></div>
+    </div>
+    <p class="note"><b>À lire honnêtement&nbsp;:</b> ceci décrit le périmètre conçu et en construction. « Conçu » = pensé et cadré. « En cours » = en développement. « À venir » = prévu dans la suite. Le projet est en phase de construction, pas encore lancé auprès du grand public.</p>
+  </div>
+</section>
+
+<!-- 3. Les 2 briques malignes -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="n">03</span> Les deux idées « malignes »</div>
+    <h2>Deux détails qui font toute la différence.</h2>
+    <div class="grid2" style="margin-top:26px">
+      <div class="card">
+        <div class="ic">🤖</div>
+        <h3>Le CV boosté à l'IA — avec le numéro et l'e-mail masqués</h3>
+        <p class="plain">L'IA écrit un beau CV pour l'extra à partir de son parcours. Mais son <b>téléphone et son adresse mail sont cachés</b>. Résultat&nbsp;: le recruteur ne peut pas contacter la personne « en direct » pour éviter l'appli.</p>
+        <p class="plain">Tout le monde passe donc par la plateforme — c'est ce qui protège le modèle économique. C'est exactement la logique qui a fait le succès de sites comme Airbnb ou LeBonCoin.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🛡️</div>
+        <h3>La vérification KBIS — la confiance comme fondation</h3>
+        <p class="plain">Le KBIS, c'est la « carte d'identité » officielle d'une entreprise en France. En le vérifiant, on s'assure que <b>chaque employeur est réel et déclaré</b>.</p>
+        <p class="plain">Pour l'extra, c'est la garantie de ne pas tomber sur un employeur douteux. Pour le sérieux de la plateforme, c'est essentiel&nbsp;: on ne laisse pas entrer n'importe qui.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Le marché -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="n">04</span> Le marché — pourquoi c'est énorme</div>
+    <h2>Un secteur immense, et un manque de personnel chronique.</h2>
+    <p class="lead">Ces chiffres sont des ordres de grandeur publics sur le secteur en France. Ils montrent une chose simple&nbsp;: le besoin est massif et permanent.</p>
+    <div class="kpis" style="margin-top:26px">
+      <div class="kpi"><div class="num">~175<span class="u">k</span></div><div class="lab">cafés, hôtels &amp; restaurants en France</div></div>
+      <div class="kpi"><div class="num">~1<span class="u">M</span></div><div class="lab">de personnes employées dans le secteur</div></div>
+      <div class="kpi"><div class="num">~200<span class="u">k</span></div><div class="lab">postes non pourvus, difficiles à recruter</div></div>
+      <div class="kpi"><div class="num">365<span class="u">j</span></div><div class="lab">le besoin d'extras existe toute l'année</div></div>
+    </div>
+    <p class="note"><b>Sources&nbsp;:</b> ordres de grandeur issus de données publiques du secteur (INSEE, organisations professionnelles de l'hôtellerie-restauration). Chiffres arrondis, à titre indicatif pour situer la taille du marché.</p>
+  </div>
+</section>
+
+<!-- 5. Monétisation -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="n">05</span> La monétisation — comment ça rapporte</div>
+    <h2>Trois façons de gagner de l'argent, sans faire payer trop cher.</h2>
+    <div class="grid3" style="margin-top:26px">
+      <div class="card">
+        <div class="ic">⭐</div>
+        <h3>Les « slots premium »</h3>
+        <p class="plain">Un établissement paie un petit abonnement (ou à la mission) pour <b>passer en priorité</b> et publier plus de besoins. C'est le revenu principal, régulier et prévisible.</p>
+      </div>
+      <div class="card">
+        <div class="ic">📣</div>
+        <h3>La pub privée dédiée</h3>
+        <p class="plain">Un <b>grand acteur national</b> (un brasseur, une marque de boissons, un fournisseur de matériel ou de vêtements pro) sponsorise l'appli, très ciblée sur son public idéal&nbsp;: les pros de la restauration.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🤝</div>
+        <h3>Services à valeur ajoutée</h3>
+        <p class="plain">Options payantes&nbsp;: mise en avant d'un profil, CV boosté premium, statistiques, gestion d'équipe… De petites sommes qui s'additionnent.</p>
+      </div>
+    </div>
+    <p class="note"><b>L'idée maligne&nbsp;:</b> comme le contact direct est masqué, personne ne peut « contourner » l'appli. Chaque mission qui se fait grâce à la plateforme reste dans la plateforme.</p>
+  </div>
+</section>
+
+<!-- 6. Prévisionnel -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="n">06</span> Le prévisionnel — à quoi ça pourrait ressembler</div>
+    <h2>Une projection prudente, sur 3 ans.</h2>
+    <p class="lead">Important pour la famille&nbsp;: ce ne sont <b>pas</b> des revenus garantis, ce sont des <b>hypothèses de travail</b> pour montrer la logique. Ils partent volontairement bas et grandissent avec le nombre d'établissements abonnés.</p>
+
+    <div class="rev-cols">
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>Année</th><th>Établ. actifs</th><th>Slots premium</th><th>Pub dédiée</th><th>Total /an</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>An 1 — lancement local</td><td class="n">150</td><td class="n">54 k€</td><td class="n">—</td><td class="n">54 k€</td></tr>
+            <tr><td>An 2 — expansion régionale</td><td class="n">900</td><td class="n">324 k€</td><td class="n">60 k€</td><td class="n">384 k€</td></tr>
+            <tr class="total"><td>An 3 — plusieurs villes</td><td class="n">3 000</td><td class="n">1,08 M€</td><td class="n">150 k€</td><td class="n">1,23 M€</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3 style="margin-bottom:10px">La logique derrière</h3>
+        <ul class="clean">
+          <li><b>Slot premium&nbsp;≈ 30 €/mois</b> par établissement abonné (soit 360 €/an).</li>
+          <li>On grandit ville par ville&nbsp;: d'abord une zone test, puis on duplique.</li>
+          <li>La <b>pub dédiée</b> n'arrive qu'à l'An 2, quand l'audience de pros devient assez grande pour intéresser une grande marque.</li>
+          <li>Aucune de ces lignes n'a besoin d'être « énorme »&nbsp;: 3 000 établissements, c'est moins de 2 % du marché français.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note"><b>À dire clairement&nbsp;:</b> ce sont des scénarios illustratifs, pas des promesses. Les vrais chiffres dépendront du lancement, du bouche-à-oreille et de l'exécution. L'objectif ici est de montrer que <b>même avec une petite part du marché, le modèle tient la route.</b></p>
+  </div>
+</section>
+
+<!-- 7. Calendrier -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="n">07</span> Le calendrier — la chronologie de déploiement</div>
+    <h2>Étape par étape, sans brûler les étapes.</h2>
+    <div class="tl" style="margin-top:30px">
+      <div class="step done">
+        <div class="rail"><div class="mk">✓</div><div class="line"></div></div>
+        <div class="body"><div class="when">Fait</div><h3>Conception &amp; site vitrine</h3><p>L'idée est cadrée, le concept est clair, la façade publique existe.</p></div>
+      </div>
+      <div class="step now">
+        <div class="rail"><div class="mk">●</div><div class="line"></div></div>
+        <div class="body"><div class="when">Maintenant</div><h3>Construction de l'appli mobile &amp; des briques clés</h3><p>Développement de l'appli, de la vérification KBIS, du CV boosté à l'IA et de la base de données sécurisée.</p></div>
+      </div>
+      <div class="step">
+        <div class="rail"><div class="mk">3</div><div class="line"></div></div>
+        <div class="body"><div class="when">Prochaine étape</div><h3>Bêta test sur une première zone</h3><p>On lance dans une ville / un quartier, avec de vrais restaurants et de vrais extras, pour tout roder.</p></div>
+      </div>
+      <div class="step">
+        <div class="rail"><div class="mk">4</div><div class="line"></div></div>
+        <div class="body"><div class="when">Ensuite</div><h3>Lancement officiel &amp; premiers abonnements</h3><p>Ouverture au public sur la zone, mise en place des slots premium payants.</p></div>
+      </div>
+      <div class="step">
+        <div class="rail"><div class="mk">5</div><div class="line"></div></div>
+        <div class="body"><div class="when">Plus tard</div><h3>Expansion ville par ville &amp; partenariat pub national</h3><p>On duplique le modèle sur d'autres villes et on signe un grand partenaire national.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Marketing -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="n">08</span> Le marketing prévu</div>
+    <h2>Comment on va se faire connaître.</h2>
+    <div class="grid2" style="margin-top:26px">
+      <div class="card"><div class="ic">👟</div><h3>Le terrain, d'abord</h3><p class="plain">Aller voir les restaurateurs un par un dans la zone de lancement. Dans ce métier, la confiance se gagne en face à face. Rien ne remplace la poignée de main.</p></div>
+      <div class="card"><div class="ic">📲</div><h3>Réseaux sociaux ciblés</h3><p class="plain">Instagram, TikTok, groupes Facebook de pros de la restauration&nbsp;: là où les extras et les patrons passent déjà leur temps.</p></div>
+      <div class="card"><div class="ic">🗣️</div><h3>Le bouche-à-oreille &amp; parrainage</h3><p class="plain">Un extra content en amène d'autres. Un patron dépanné le dit à ses voisins. On récompense ceux qui invitent.</p></div>
+      <div class="card"><div class="ic">🤝</div><h3>Écoles &amp; partenaires</h3><p class="plain">Écoles hôtelières, associations, fournisseurs du secteur&nbsp;: des relais naturels pour toucher beaucoup de monde d'un coup.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Chantiers en cours -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="n">09</span> Les chantiers en cours</div>
+    <h2>Sur quoi je travaille en ce moment.</h2>
+    <div class="build" style="margin-top:26px">
+      <div class="brow"><div class="bi">📱</div><div><div class="bt">Finaliser l'application mobile</div><div class="bd">Le parcours complet&nbsp;: inscription, publier un besoin, matcher, confirmer une mission.</div></div><span class="badge wip">En cours</span></div>
+      <div class="brow"><div class="bi">🛡️</div><div><div class="bt">Vérification KBIS automatique</div><div class="bd">Contrôler l'entreprise sans friction, dès l'inscription.</div></div><span class="badge wip">En cours</span></div>
+      <div class="brow"><div class="bi">🤖</div><div><div class="bt">Le CV boosté à l'IA + masquage des contacts</div><div class="bd">Belle mise en forme automatique, téléphone et e-mail cachés.</div></div><span class="badge wip">En cours</span></div>
+      <div class="brow"><div class="bi">🗄️</div><div><div class="bt">Sécuriser la base de données</div><div class="bd">Protéger les données personnelles, gérer les comptes et les droits.</div></div><span class="badge wip">En cours</span></div>
+      <div class="brow"><div class="bi">🧪</div><div><div class="bt">Préparer la bêta sur une première zone</div><div class="bd">Trouver les premiers restaurants et extras volontaires pour tester.</div></div><span class="badge next">À venir</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Callout final -->
+<section>
+  <div class="wrap">
+    <div class="callout">
+      <div class="eyebrow" style="color:var(--amber)"><span class="n">★</span> Pour résumer</div>
+      <h2>En une phrase&nbsp;: je construis l'outil qui manque à tout un secteur.</h2>
+      <p class="lead">Des centaines de milliers d'établissements cherchent du monde toute l'année. Des milliers de personnes cherchent des missions. Aujourd'hui, ça se fait dans le désordre. <span class="amberw">Mon application met de l'ordre, de la confiance et de la rapidité là-dedans</span> — et se rémunère intelligemment sans jamais pouvoir être contournée.</p>
+      <p class="lead" style="margin-bottom:0">Ce n'est pas encore fini, et ce ne sera pas facile. Mais la brique la plus dure — comprendre le vrai problème et concevoir la bonne solution — est posée. Le reste, c'est de la construction, étape par étape.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Horeca Extra — document de présentation familial · Chiffres de marché&nbsp;: ordres de grandeur publics · Prévisionnel&nbsp;: hypothèses de travail, non garanties.
+</footer>
+
+<script>
+  // Petite animation : les créneaux "se remplissent" un par un.
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var slots = Array.prototype.slice.call(document.querySelectorAll('#slots .slot'));
+    if(reduce){ slots.forEach(function(s){ s.classList.add('filled'); }); return; }
+    function run(){
+      slots.forEach(function(s,i){
+        setTimeout(function(){ s.classList.add('filled'); }, 1100 + i*900);
+      });
+    }
+    if('IntersectionObserver' in window){
+      var seen=false;
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting && !seen){ seen=true; run(); io.disconnect(); }});
+      },{threshold:.4});
+      io.observe(document.getElementById('slots'));
+    } else { run(); }
+  })();
+</script>
